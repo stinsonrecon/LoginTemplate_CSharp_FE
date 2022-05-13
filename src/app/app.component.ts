@@ -11,6 +11,11 @@ import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
 import { FuseSplashScreenService } from '@fuse/services/splash-screen.service';
 import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
 
+import { navigation, ImisNavigation } from 'app/navigation/navigation';
+import { locale as navigationVietnam } from 'app/navigation/i18n/vi';
+import { locale as navigationEnglish } from 'app/navigation/i18n/en';
+import {  AuthService } from './shared/services';
+
 @Component({
     selector: 'app',
     templateUrl: './app.component.html',
