@@ -50,7 +50,7 @@ export class AppComponent implements OnInit, OnDestroy {
         private _fuseTranslationLoaderService: FuseTranslationLoaderService,
         private _translateService: TranslateService,
         private _platform: Platform,
-
+    
     ) {
         // // Get default navigation
         // this.navigation = navigation;
@@ -62,13 +62,16 @@ export class AppComponent implements OnInit, OnDestroy {
         // this._fuseNavigationService.setCurrentNavigation('main');
 
         // Chuyen sang file navigation (de co the goi tu nhieu noi: App.Component, Home.Component)
-
+      
 
         // Add languages
         this._translateService.addLangs(['vi', 'en']);
 
         // Set the default language
         this._translateService.setDefaultLang('vi');
+
+        // Set the navigation translations
+        this._fuseTranslationLoaderService.loadTranslations(navigationVietnam, navigationEnglish);
 
         // Use a language
         this._translateService.use('vi');
@@ -162,7 +165,7 @@ export class AppComponent implements OnInit, OnDestroy {
         this._unsubscribeAll.next();
         this._unsubscribeAll.complete();
 
-
+        
     }
 
     // -----------------------------------------------------------------------------------------------------
