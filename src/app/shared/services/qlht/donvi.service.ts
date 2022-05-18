@@ -18,10 +18,8 @@ export class DonViService extends BaseService {
         );
     }
 
-    getDonVi(loaiDonVi: any): any {
+    getDonVi(): any {
         let params = new HttpParams();
-        
-        params = params.append("loaiDonVi", loaiDonVi);
 
         return this._http
             .get<any>(`${this.apiDefault}/donvi`, {
@@ -46,9 +44,6 @@ export class DonViService extends BaseService {
             if (item.trangThai >= 0) {
                 params = params.append("trangThai", item.trangThai);
             }
-            // if ((item.loaiDonVi >= 0)) {
-            //     params = params.append("loaiDonVi", item.loaiDonVi);
-            // }
         }
         return this._http
             .get<any>(`${this.apiDefault}/donvi/getall`, {

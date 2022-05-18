@@ -107,7 +107,7 @@
             <div class="flex-row">
                 <p style="width: 30%; font-weight: bold;">Nhóm quyền<span style="color: red;">(*)</span></p>
                 <mat-form-field appearance="outline" style="width: 70%;">
-                    <mat-select formControlName="nhomQuyen" [(ngModel)]="data.item.applicationRoleId">
+                    <mat-select formControlName="nhomQuyen" [(ngModel)]="data.item.applicationRolesId">
                         <mat-option *ngFor="let item of dsRole" [value]="item.id">{{item.roleName}}
                         </mat-option>
                     </mat-select>

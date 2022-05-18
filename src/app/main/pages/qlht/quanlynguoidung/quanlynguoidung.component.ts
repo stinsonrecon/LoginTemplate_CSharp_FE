@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { BaseClass } from '@app/base-class';
 import { mType, NotificationService } from '@app/shared/component/notification-dialog/notification.service';
-import { loaiDonVi } from '@app/shared/constants/qlht.constants';
 import { UserService } from '@app/shared/services/qlht/user.service';
 import { DonViService } from '@app/shared/services/qlht/donvi.service';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
@@ -19,9 +18,7 @@ export class QuanLyNguoiDungComponent extends BaseClass implements OnInit {
     displayedColumns = ["tt", "hoVaTen", "taiKhoan", "email", "roleName", "sdt", "donVi", "accountType", "trangThai", "thaoTac"]
     dsDonVi: any;
     dsUser: any;
-    loaiDonVi = loaiDonVi
     searchItem: any = {
-        loaiDonVi: -99,
         tuKhoa: '',
         trangThai: -99,
         accountType: -99
@@ -44,9 +41,6 @@ export class QuanLyNguoiDungComponent extends BaseClass implements OnInit {
                 element.tenDonVi = this.dsDonVi.find(item => item.id == element.donViId) ? this.dsDonVi.find(item => item.id == element.donViId).tenDonVi : null
             });
             this.dsUser = this.dsUser.filter(item => item.firstName.includes(this.searchItem.tuKhoa.trim()) || (item.lastName.includes(this.searchItem.tuKhoa.trim())) || (item.userName.includes(this.searchItem.tuKhoa.trim())) || (item.tenDonVi && item.tenDonVi.includes(this.searchItem.tuKhoa.trim())))
-            if(this.searchItem.loaiDonVi != -99){
-                this.dsUser = this.dsUser.filter(item => item.loaiDonVi == this.searchItem.loaiDonVi);
-            }
             if(this.searchItem.trangThai != -99){
                 this.dsUser = this.dsUser.filter(item => ((item.isActive ? 1 : 0) == this.searchItem.trangThai));
             }
@@ -73,7 +67,7 @@ export class QuanLyNguoiDungComponent extends BaseClass implements OnInit {
     }
 
     getDonVi() {
-        this.donViService.getDonVi(null).pipe(this.unsubsribeOnDestroy).subscribe(next => {
+        this.donViService.getDonVi().pipe(this.unsubsribeOnDestroy).subscribe(next => {
             this.dsDonVi = next;
             this.getUser();
         })
@@ -87,7 +81,7 @@ export class QuanLyNguoiDungComponent extends BaseClass implements OnInit {
             phoneNumber: null,
             donViId: null,
             password: null,
-            applicationRoleId: null,
+            applicationRolesId: null,
             isActive: true,
             isDelete: null,
             accountTypeString: "0"

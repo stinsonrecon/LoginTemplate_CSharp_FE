@@ -26,4 +26,12 @@ export class RoleService extends BaseService {
             })
             .pipe(catchError(this.handleError));
     }
+
+    createOrUpdateRole(params: any): any {
+        return this._http
+            .post<any>(`${this.apiUrl}/api/role/${params.id || '0'}`, params, {
+                headers: this.sharedHeaders,
+            })
+            .pipe(catchError(this.handleError));
+    }
 }

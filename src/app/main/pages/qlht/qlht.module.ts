@@ -28,6 +28,16 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { QuanLyNguoiDungComponent } from "./quanlynguoidung/quanlynguoidung.component";
 import { DialogAddNguoidungComponent } from "./quanlynguoidung/dialog-add-nguoidung/dialog-add-nguoidung.component";
 import { DialogUpdatePasswordComponent } from "./quanlynguoidung/dialog-update-password/dialog-update-password.component";
+//--------
+import { QuanLyNhomQuyenComponent } from "./quanlynhomquyen/quanlynhomquyen.component";
+import { NamebyId } from "./quanlynhomquyen/dialog-add-nhomquyen/viewNameById.pipe";
+import { DialogAddNhomQuyenComponent } from "./quanlynhomquyen/dialog-add-nhomquyen/dialog-add-nhomquyen.component";
+//--------
+import { DanhMucDonViComponent } from "./danhmucdonvi/danhmucdonvi.component";
+import { DialogAddDonViComponent } from "./danhmucdonvi/dialog-add-donvi/dialog-add-donvi.component";
+//--------
+import { DanhMucChucNangComponent } from "./danhmucchucnang/danhmucchucnang.component";
+import { DialogAddChucnangComponent } from "./danhmucchucnang/dialog-add-chucnang/dialog-add-chucnang.component";
 
 registerLocaleData(localeVI, 'vi-VN');
 
@@ -37,13 +47,38 @@ const routes: Routes = [
         component: QuanLyNguoiDungComponent,
         canActivate: [AuthGuard]
     },
+    {
+        path: 'danhmucdonvi',
+        component: DanhMucDonViComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'quanlynhomquyen',
+        component: QuanLyNhomQuyenComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'danhmucchucnang',
+        component: DanhMucChucNangComponent,
+        canActivate: [AuthGuard]
+    },
 ];
 
 @NgModule({
     declarations : [
         QuanLyNguoiDungComponent,
         DialogAddNguoidungComponent,
-        DialogUpdatePasswordComponent
+        DialogUpdatePasswordComponent,
+
+        QuanLyNhomQuyenComponent,
+        NamebyId,
+        DialogAddNhomQuyenComponent,
+
+        DanhMucDonViComponent,
+        DialogAddDonViComponent,
+
+        DanhMucChucNangComponent,
+        DialogAddChucnangComponent
     ],
     imports : [
         CommonModule,
@@ -60,7 +95,7 @@ const routes: Routes = [
         FlexLayoutModule,
         MatProgressBarModule,
         OwlDateTimeModule,
-        OwlNativeDateTimeModule
+        OwlNativeDateTimeModule,
     ],
     exports : [
 

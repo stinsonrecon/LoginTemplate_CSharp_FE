@@ -54,7 +54,7 @@ export class DialogAddNguoidungComponent extends BaseClass implements OnInit {
             });
     }
     getDonVi() {
-        this.donViService.getDonVi(null).pipe(this.unsubsribeOnDestroy).subscribe(next => {
+        this.donViService.getDonVi().pipe(this.unsubsribeOnDestroy).subscribe(next => {
             this.dsDonVi = next;
             this.dsDonViSearch = next;
         })
